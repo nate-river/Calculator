@@ -1,0 +1,90 @@
+body,p,h1,h2,h3,h4,h5,h6,ul,li,dl,ol{
+	margin:0;
+	padding:0;
+	font-family:"ADELE";
+}
+a{
+	text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+.jisuanqi{
+	width:320px;
+	height:640px;
+	margin:0 auto;
+}
+.xianshiping{
+	width:317px;
+	background-color: black;
+	height:150px;
+	position: relative;
+	margin-left:-1px;
+}
+.xianshiping .xianshizi{
+	position: absolute;
+	right:15px;
+	bottom:4px;
+	color:white;
+	font-size:4em;
+
+	max-width:300px;
+	overflow:hidden;
+}
+
+.item{
+	cursor: pointer;
+	text-align:center;
+	line-height: 78px;
+	font-size:2em;
+	width:78px;
+	height:78px;
+	border:1px solid black;
+	float:left;
+	margin-top:-1px;
+	margin-left:-1px;
+}
+.jiakuan{
+	width:157px;
+}
+.hui{
+	background-color: #c5c7c9;
+}
+.chengse{
+	color:white;
+	background-color: #df8425;
+}
+
+
+
+.dingwei{
+	position: absolute;
+	width:200px;
+	height:50px;
+	text-align: center;
+	line-height: 50px;
+	font-size:2em;
+
+}
+.yi{
+
+	top:0;
+	right:40px;
+}
+.er{
+	top:80px;
+	right:40px;
+}
+.yunsuanfu{
+	top:160px;
+	right:40px;
+}
+
+
+@media screen and(max-width:640px){
+	.jisuanqi{
+	width:320px;
+	height:640px;
+	margin:0;
+}
+}
