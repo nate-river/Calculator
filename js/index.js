@@ -1,90 +1,92 @@
 $(function (){
-	
-	yi = '';
-	er = '';
-	yunsuanfu = '';
 
-	
+	var yi = '',er = '',yunsuanfu = '',xiaoshudian = '',yunsuanjieguo = 0;
 	$('.item').click(function(){
-		/* 在内存中开辟一个空间
-		   放当前点击的那个块里面的字
-		*/
 		fuhao = $(this).text();
-
-        /* 如果点击的是数字，把数字放到显示屏上*/
-		shuzihua = parseInt(fuhao);
-		if( !isNaN(shuzihua) ){
-			
+		if( !isNaN( parseInt(fuhao) ) ){
 			if (!yunsuanfu){
-				yi  =  yi*10 + shuzihua;	
+				yi  =  yi + fuhao;	
 				$('.xianshizi').text(yi);
 			}
-			
 			if( yunsuanfu ){
-				er  = er*10 + shuzihua;
+				er  = er + fuhao;
+				$('.xianshizi').text(er);
 			}	
 		}
-
-
-
-		/* 如果点击的是＋号 把加号存储下来*/
+        if(fuhao ==  '.'){
+            if(xiaoshudian == ''){
+                xiaoshudian = '.';
+                $('.xianshizi').text( $('.xianshizi').text()+'.' )
+                if( !yunsuanfu){
+                    yi  = yi + '.';
+                }
+                if( yunsuanfu){
+                    er = er + '.';
+                }
+            }
+        }
+        if(fuhao == '+-'){
+            if ( $('.xianshizi').text().charAt(0) == '-' ){
+                if(!yunsuanfu){
+                    yi = yi.slice(1);
+                    $('.xianshizi').text(yi);
+                }else{
+                    er = er.slice(1);
+                    $('.xianshizi').text(er);
+                }
+            }else{
+                if(!yunsuanfu){
+                    yi = '-' + yi;
+                    $('.xianshizi').text(yi);
+                }else{
+                    er = '-' + er;
+                    $('.xianshizi').text(er);
+                }
+            }
+        }
 		if(    (fuhao == '+')||
 			   (fuhao == '-')||
 			   (fuhao == 'x')||
 			   (fuhao == '/')||
 			   (fuhao == '%') 
-								   ){
+		  ){
+            if( yi == '' ){
+                yi = 0;
+            }
+            $('.chengse').css('boxShadow','none');
+            $(this).css('boxShadow','2px 2px 0px black inset,-2px -2px 0px black inset');
+            xiaoshudian = '';
 			yunsuanfu = fuhao;
 		}	
+        if(fuhao == 'AC'){
+			$('.xianshizi').text(0);
+            yi = er = yunsuanfu = xiaoshudian = yunsuanjieguo =  '';
+        }
 
 		if(fuhao == '='){
-
-			// if(yunsuanfu == '+'){
-			// 	$('.xianshizi').text(yi + er);
-			// }
-			// if( yunsuanfu == '-'){
-			// 	$('.xianshizi').text(yi - er);
-			// }
-			// if( yunsuanfu == 'x'){
-			// 	$('.xianshizi').text(yi * er);
-			// }
-			// if( yunsuanfu == '/'){
-			// 	$('.xianshizi').text(yi / er);
-			// }
-			// if( yunsuanfu == '%'){
-			// 	$('.xianshizi').text(yi % er);
-			// }
-			var yunsuanjieguo;
+            $('.chengse').css('boxShadow','none');
+            yi = parseFloat(yi);
+            er = parseFloat(er);
 			switch(yunsuanfu){
-				case '+': 
-					yunsuanjieguo = yi + er; 
-					break;
-				case '-':
-					yunsuanjieguo = yi - er; 
-					break;
-				case '*':
-					yunsuanjieguo = yi * er; 
-					break;
-				case '/':
-					yunsuanjieguo  = yi / er; 
-					break;
-				case '%':
-					yunsuanjieguo  = yi % er; 
-					break;
+			case '+': 
+				yunsuanjieguo = yi + er; 
+				break;
+			case '-':
+				yunsuanjieguo = yi - er; 
+				break;
+			case 'x':
+				yunsuanjieguo = yi * er; 
+				break;
+			case '/':
+				yunsuanjieguo  = yi / er; 
+				break;
+			case '%':
+				yunsuanjieguo  = yi % er; 
+				break;
 			}
-			$('.xianshizi').text(yunsuanjieguo);
-
-			yi = '';
-			er = '';
-			yunsuanfu = '';
+			$('.xianshizi').text(yunsuanjieguo||0);
+			yi = er = xiaoshudian = '';
+            yi = yunsuanjieguo||0;
 		}
-
-
-  
-		$('#yi').text(yi);
-		$('#er').text(er);
-		$('#yunsuanfu').text(yunsuanfu);
-
 	})
-
 })
