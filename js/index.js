@@ -1,9 +1,23 @@
 $(function (){
-
 	var yi = '',er = '',yunsuanfu = '',xiaoshudian = '',yunsuanjieguo = 0;
-	$('.item').click(function(){
+	$('.item').mouseup(function(){
+        if( !isNaN ( $(this).text() )
+            || $(this).text() == '.'
+            || $(this).text() == 'AC'
+            || $(this).text() == '+-'
+            || $(this).text() == '='
+          ){
+            var that = this;
+            setTimeout(function(){
+                $(that).css('boxShadow','none');
+            },200)
+        }
+    })
+
+	$('.item').mousedown(function(){
 		fuhao = $(this).text();
 		if( !isNaN( parseInt(fuhao) ) ){
+            $(this).css('boxShadow','0 0 10px black inset')
 			if (!yunsuanfu){
 				yi  =  yi + fuhao;	
 				$('.xianshizi').text(yi);
@@ -14,6 +28,7 @@ $(function (){
 			}	
 		}
         if(fuhao ==  '.'){
+            $(this).css('boxShadow','0 0 10px black inset')
             if(xiaoshudian == ''){
                 xiaoshudian = '.';
                 $('.xianshizi').text( $('.xianshizi').text()+'.' )
@@ -26,6 +41,7 @@ $(function (){
             }
         }
         if(fuhao == '+-'){
+            $(this).css('boxShadow','0 0 10px black inset')
             if ( $('.xianshizi').text().charAt(0) == '-' ){
                 if(!yunsuanfu){
                     yi = yi.slice(1);
@@ -59,11 +75,13 @@ $(function (){
 			yunsuanfu = fuhao;
 		}	
         if(fuhao == 'AC'){
+            $(this).css('boxShadow','0 0 10px black inset')
 			$('.xianshizi').text(0);
             yi = er = yunsuanfu = xiaoshudian = yunsuanjieguo =  '';
         }
 
 		if(fuhao == '='){
+            $(this).css('boxShadow','0 0 10px black inset');
             $('.chengse').css('boxShadow','none');
             yi = parseFloat(yi);
             er = parseFloat(er);

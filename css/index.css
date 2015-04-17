@@ -2,10 +2,23 @@ body,p,h1,h2,h3,h4,h5,h6,ul,li,dl,ol{
 	margin:0;
 	padding:0;
 }
+body{
+  background:url('../images/bg.png') no-repeat center center;
+}
 @font-face{
   font-family:"aa";
   src:url('../font/HelveticaUltraLight.ttf');
 }
+
+.iphone6{
+  width:380px;
+  height:680px;
+  margin:0 auto;
+  padding-top:120px;
+  background:url('../images/iphone6.png') no-repeat -2px ;
+  position:relative;
+}
+
 body{
   font-family:"aa";
 }
@@ -18,14 +31,14 @@ h1,h2,h3,h4,h5,h6{
 	font-weight: normal;
 }
 .jisuanqi{
-	width:320px;
-	height:640px;
-	margin:0 auto;
+	width:340px;
+  overflow:hidden;
+  margin-left:28px;
 }
 .xianshiping{
-	width:317px;
+	width:322px;
 	background-color: black;
-	height:150px;
+	height:164px;
 	position: relative;
 	margin-left:-1px;
 }
@@ -43,18 +56,19 @@ h1,h2,h3,h4,h5,h6{
 .item{
 	cursor: pointer;
 	text-align:center;
-	line-height: 78px;
+	line-height: 80px;
 	font-size:2em;
-	width:78px;
-	height:78px;
+	width:80px;
+	height:80px;
 	border:1px solid #040404;
 	float:left;
 	margin-top:-1px;
 	margin-left:-1px;
 	background-color: #c5c7c9;
+  -webkit-transition:.2s ease-in-out;
 }
 .jiakuan{
-	width:157px;
+	width:161px;
 }
 .chengse{
 	color:white;
